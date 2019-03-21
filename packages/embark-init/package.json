@@ -1,44 +1,41 @@
 {
-  "name": "embark-reset",
+  "name": "embark-init",
   "version": "4.1.0-beta.0",
   "author": "Iuri Matias <iuri.matias@gmail.com>",
   "contributors": [],
-  "description": "DApp reset utlity for Embark",
-  "homepage": "https://github.com/embark-framework/embark/tree/master/packages/embark-reset#readme",
+  "description": "DApp init utlity for Embark",
+  "homepage": "https://github.com/embark-framework/embark/tree/master/packages/embark-init#readme",
   "bugs": "https://github.com/embark-framework/embark/issues",
   "license": "MIT",
   "repository": {
-    "directory": "packages/embark-reset",
+    "directory": "packages/embark-init",
     "type": "git",
     "url": "https://github.com/embark-framework/embark.git"
   },
-  "bin": "./bin/embark-reset.js",
+  "bin": "./bin.js",
   "main": "index.js",
   "files": [
-    "bin",
-    "cli.js",
-    "options.js"
+    "bin.js"
   ],
   "scripts": {
-    "lint": "eslint bin.js cli.js index.js options.js",
+    "lint": "eslint bin.js index.js boilerplate/",
     "package": "npm pack"
   },
   "eslintConfig": {
     "extends": "../../.eslintrc.json"
   },
   "dependencies": {
-    "commander": "2.20.0",
     "embark-cli-utils": "^4.1.0-beta.0",
-    "find-up": "2.1.0",
-    "lodash.at": "4.6.0",
-    "lodash.isequal": "4.5.0",
-    "lodash.merge": "4.6.1",
-    "rimraf": "2.6.3",
-    "subdir": "0.0.3"
+    "fs-extra": "7.0.1"
   },
   "engines": {
     "node": ">=8.12.0",
     "npm": ">=6.4.1",
     "yarn": ">=1.12.3"
+  },
+  "runtime": {
+    "engines": {
+      "node": ">=8.11.3"
+    }
   }
 }

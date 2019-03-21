@@ -1,8 +1,7 @@
 let async = require('async');
 const constants = require('../lib/constants');
 const Logger = require('../lib/core/logger');
-const {reset: embarkReset, paths: defaultResetPaths} = require('embark-reset');
-const fs = require('../lib/core/fs.js');
+const path = require('path');
 
 require('colors');
 
@@ -409,35 +408,6 @@ class EmbarkController {
       process.exit();
     });
 
-  }
-
-  async reset(options) {
-    const embarkConfig = require(fs.dappPath(options.embarkConfig || 'embark.json'));
-
-    let removePaths = [];
-    let defaultPaths = [...defaultResetPaths];
-
-    defaultPaths.push(embarkConfig.buildDir);
-    if (embarkConfig.generationDir) {
-      defaultPaths.push(embarkConfig.generationDir);
-    }
-
-    if (embarkConfig.options && embarkConfig.options.reset) {
-      if (embarkConfig.options.reset.defaults) {
-        removePaths = removePaths.concat(defaultPaths);
-      }
-      if (embarkConfig.options.reset.files) {
-        removePaths = removePaths.concat(embarkConfig.options.reset.files);
-      }
-    } else {
-      removePaths = defaultPaths;
-    }
-    removePaths = [
-      ...new Set(removePaths.map(path => {
-        return path.charAt(path.length - 1) === '/' ? path.substr(0, path.length - 1) : path;
-      }))
-    ];
-    await embarkReset({removePaths});
   }
 
   ejectWebpack() {
